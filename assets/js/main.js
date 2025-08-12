@@ -215,44 +215,44 @@
 		// <button data-year="2023">2025</button>
 
 		$.getJSON('images/images.json', function(images) {
-			// images.sort(function(a, b) {
-			//   // Extract date strings
-			//   const dateA = a.filename.substring(0, 10); // YYYY-MM-DD
-			//   const dateB = b.filename.substring(0, 10);
+			images.sort(function(a, b) {
+			  // Extract date strings
+			  const dateA = a.filename.substring(0, 10); // YYYY-MM-DD
+			  const dateB = b.filename.substring(0, 10);
 
-			//   // Compare dates descending
-			//   if (dateA > dateB) return -1;
-			//   if (dateA < dateB) return 1;
+			  // Compare dates descending
+			  if (dateA > dateB) return -1;
+			  if (dateA < dateB) return 1;
 
-			//   // Same date, extract suffix numbers
-			//   // Assume filename format: YYYY-MM-DD or YYYY-MM-DD-XX.jpg
+			  // Same date, extract suffix numbers
+			  // Assume filename format: YYYY-MM-DD or YYYY-MM-DD-XX.jpg
 
-			//   function getSuffixNumber(filename) {
-			//     // Remove extension
-			//     let name = filename.replace(/\.[^/.]+$/, ""); // remove extension
+			  function getSuffixNumber(filename) {
+			    // Remove extension
+			    let name = filename.replace(/\.[^/.]+$/, ""); // remove extension
 
-			//     let parts = name.split('-');
-			//     // If parts length > 3, last part is suffix number (e.g., "03")
-			//     if (parts.length > 3) {
-			//       let suffix = parts[3];
-			//       let num = parseInt(suffix, 10);
-			//       return isNaN(num) ? 0 : num;
-			//     }
-			//     return 0; // no suffix
-			//   }
+			    let parts = name.split('-');
+			    // If parts length > 3, last part is suffix number (e.g., "03")
+			    if (parts.length > 3) {
+			      let suffix = parts[3];
+			      let num = parseInt(suffix, 10);
+			      return isNaN(num) ? 0 : num;
+			    }
+			    return 0; // no suffix
+			  }
 
-			//   const suffixA = getSuffixNumber(a.filename);
-			//   const suffixB = getSuffixNumber(b.filename);
+			  const suffixA = getSuffixNumber(a.filename);
+			  const suffixB = getSuffixNumber(b.filename);
 
-			//   // Sort suffix ascending (0 comes first)
-			//   return suffixA - suffixB;
-			// });
+			  // Sort suffix ascending (0 comes first)
+			  return suffixA - suffixB;
+			});
 
 
 
 
 		    // Extract unique years
-		    let years = [...new Set(images.map(img => img.filename.substring(0, 4)))].sort();
+		    let years = [...new Set(images.map(img => img.filename.substring(0, 4)))].sort().reverse();
 
 		    // Create filter buttons
 		    let filterContainer = $('#year-tabs');
@@ -322,8 +322,6 @@
 
 
 		function renderGallery(imageList) {
-
-
 			let gallery = $('#main');
 			gallery.empty();
 			imageList.forEach(item => {
@@ -336,7 +334,7 @@
 				`);
 			});
 
-			renderThumbs();
+			// renderThumbs();
 			setupPoptrox()
 		}
 
@@ -389,7 +387,7 @@
 				fadeSpeed: 300,
 				onPopupClose: function() { $body.removeClass('modal-active'); },
 				onPopupOpen: function() { $body.addClass('modal-active'); },
-				overlayOpacity: 0,
+				overlayOpacity: 0.5,
 				popupCloserText: '',
 				popupHeight: 150,
 				popupLoaderText: '',
