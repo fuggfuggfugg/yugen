@@ -250,7 +250,7 @@
 		    // Create filter buttons
 		    let filterContainer = $('#year-tabs');
 		    filterContainer.empty();
-		    filterContainer.append(`<button class="filter-btn" data-year="all">All</button> `);
+		    //filterContainer.append(`<button class="filter-btn" data-year="all">All</button> `);
 		    years.forEach(year => {
 		        filterContainer.append(`<button class="filter-btn" data-year="${year}">${year}</button> `);
 		    });
@@ -293,7 +293,7 @@
 		        }
 		    } else {
 		        // No hash, show all or default year (e.g., first year)
-		        applyFilter("all");
+		        applyFilter("2025");
 		    }
 
 		    // Filter on click
