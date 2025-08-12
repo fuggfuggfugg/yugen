@@ -216,37 +216,30 @@
 
 		$.getJSON('images/images.json', function(images) {
 			images.sort(function(a, b) {
-			  // Extract date strings
-			  const dateA = a.filename.substring(0, 10); // YYYY-MM-DD
+			  const dateA = a.filename.substring(0, 10);
 			  const dateB = b.filename.substring(0, 10);
 
-			  // Compare dates descending
+			  // Compare date descending
 			  if (dateA > dateB) return -1;
 			  if (dateA < dateB) return 1;
 
-			  // Same date, extract suffix numbers
-			  // Assume filename format: YYYY-MM-DD or YYYY-MM-DD-XX.jpg
-
-			  function getSuffixNumber(filename) {
-			    // Remove extension
-			    let name = filename.replace(/\.[^/.]+$/, ""); // remove extension
-
-			    let parts = name.split('-');
-			    // If parts length > 3, last part is suffix number (e.g., "03")
+			  // Same date — compare suffix descending
+			  function getSuffix(filename) {
+			    const name = filename.replace(/\.[^/.]+$/, ""); // strip extension
+			    const parts = name.split("-");
 			    if (parts.length > 3) {
-			      let suffix = parts[3];
-			      let num = parseInt(suffix, 10);
-			      return isNaN(num) ? 0 : num;
+			      const n = parseInt(parts[3], 10);
+			      return isNaN(n) ? -Infinity : n; // Non-number suffix goes first
 			    }
-			    return 0; // no suffix
+			    return 0; // no suffix, lowest number
 			  }
 
-			  const suffixA = getSuffixNumber(a.filename);
-			  const suffixB = getSuffixNumber(b.filename);
+			  const suffixA = getSuffix(a.filename);
+			  const suffixB = getSuffix(b.filename);
 
-			  // Sort suffix ascending (0 comes first)
-			  return suffixA - suffixB;
+			  return suffixB - suffixA; // descending order for suffix
 			});
+
 
 
 
