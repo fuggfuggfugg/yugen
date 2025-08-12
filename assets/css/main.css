@@ -1627,10 +1627,10 @@ input, select, textarea {
 		}
 
 			#main .thumb:after {
-				/*background-image: -moz-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
+				background-image: -moz-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
 				background-image: -webkit-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
 				background-image: -ms-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
-				background-image: linear-gradie*/nt(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
+				background-image: linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
 				pointer-events: none;
 				background-size: cover;
 				content: '';
@@ -1647,21 +1647,25 @@ input, select, textarea {
 				background-position: top center;
 				background-repeat: no-repeat;
 				background-size: cover;
-				border: 0;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
 				width: 100%;
 				border-radius: 15px;
-    			border: solid 5px #242629;
+				border: solid 3px #242629;
+				line-height: 1;
+				vertical-align: middle;
+				overflow: hidden;
+				display: inline-block;
+				float: left;
+
+    			> img {
+    				height: 300px;
+    			}
 			}
 
 			#main .thumb > h2 {
 				pointer-events: none;
-				bottom: 1.875em;
+				bottom: 1em;
 				font-size: 0.8em;
-				left: 2.1875em;
+				left: 1em;
 				margin: 0;
 				position: absolute;
 				z-index: 1;
@@ -1717,9 +1721,6 @@ input, select, textarea {
 			-webkit-transition-delay: 2.525s;
 			-ms-transition-delay: 2.525s;
 			transition-delay: 2.525s;
-			height: calc(40vh - 2em);
-			min-height: 20em;
-			width: 20%;
 		}
 
 			#main .thumb:nth-child(1) {
@@ -1813,9 +1814,6 @@ input, select, textarea {
 				-webkit-transition-delay: 2.075s;
 				-ms-transition-delay: 2.075s;
 				transition-delay: 2.075s;
-				height: calc(40vh - 2em);
-				min-height: 20em;
-				width: 25%;
 			}
 
 				#main .thumb:nth-child(1) {
@@ -1890,9 +1888,6 @@ input, select, textarea {
 				-webkit-transition-delay: 1.625s;
 				-ms-transition-delay: 1.625s;
 				transition-delay: 1.625s;
-				height: calc(40vh - 2em);
-				min-height: 20em;
-				width: 33.3%;
 			}
 
 				#main .thumb:nth-child(1) {
@@ -1946,9 +1941,6 @@ input, select, textarea {
 				-webkit-transition-delay: 2.075s;
 				-ms-transition-delay: 2.075s;
 				transition-delay: 2.075s;
-				height: calc(28.57143vh - 1.33333em);
-				min-height: 18em;
-				width: 50%;
 			}
 
 				#main .thumb:nth-child(1) {
@@ -2023,9 +2015,6 @@ input, select, textarea {
 				-webkit-transition-delay: 1.175s;
 				-ms-transition-delay: 1.175s;
 				transition-delay: 1.175s;
-				height: calc(40vh - 2em);
-				min-height: 18em;
-				width: 100%;
 			}
 
 				#main .thumb:nth-child(1) {
