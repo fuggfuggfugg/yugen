@@ -1358,7 +1358,8 @@ input, select, textarea {
 			.poptrox-popup .closer,
 			.poptrox-popup .nav-previous,
 			.poptrox-popup .nav-next {
-				display: none !important;
+				width: 4em;
+				opacity: 1;
 			}
 
 		}
