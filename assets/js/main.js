@@ -380,6 +380,12 @@
 				fadeSpeed: 300,
 				onPopupClose: function() { $body.removeClass('modal-active'); },
 				onPopupOpen: function() { $body.addClass('modal-active'); },
+				onImageLoaded: function(e,i) { 
+					$img = $('.image > img[src="'+ e.src +'"]');
+					$img[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); 
+					$('.image').removeClass("active");
+					$img.parent().addClass("active");
+				},
 				overlayOpacity: 0.5,
 				popupCloserText: '',
 				popupHeight: 150,
@@ -393,7 +399,8 @@
 				usePopupForceClose: true,
 				usePopupLoader: true,
 				usePopupNav: true,
-				windowMargin: 50
+				windowMargin: 50,
+				usePopupEasyClose: false
 			});
 		
 			// Hack: Set margins to 0 when 'xsmall' activates.

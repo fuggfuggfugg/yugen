@@ -1650,16 +1650,21 @@ input, select, textarea {
 				background-size: cover;
 				width: 100%;
 				border-radius: 15px;
-				border: solid 3px #242629;
+				border: solid 6px #242629;
 				line-height: 1;
 				vertical-align: middle;
 				overflow: hidden;
 				display: inline-block;
 				float: left;
+				height: 300px;
+			}
 
-    			> img {
-    				height: 300px;
-    			}
+			#main .thumb > .image > img {
+				height: 100%;
+			}
+
+			#main .thumb > .image.active {
+				outline: solid 6px #00fffa !important;
 			}
 
 			#main .thumb > h2 {
