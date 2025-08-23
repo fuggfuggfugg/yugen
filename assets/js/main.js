@@ -240,9 +240,10 @@
 			  return suffixB - suffixA; // descending order for suffix
 			});
 
-
-
-
+			// --- Assign global counter (newest gets largest number) ---
+			images.forEach((img, i) => {
+			    img.idx = images.length - i; // oldest = 1, newest = max
+			});
 
 		    // Extract unique years
 		    let years = [...new Set(images.map(img => img.filename.substring(0, 4)))].sort().reverse();
@@ -321,7 +322,7 @@
 				gallery.append(`
 					<article class="thumb">
 						<a href="images/art/${item.filename}" data-file="${item.filename}" class="image"><img src="images/art/${item.filename}" alt="${item.title}" /></a>
-						<h2>${item.title}</h2>
+						<h2><b>#${item.idx}</b> · ${item.title}</h2>
 						<p>${item.desc}</p>
 					</article>
 				`);
@@ -348,16 +349,16 @@
 				// This sets the background of the "image" <span> to the image pointed to by its child
 				// <img> (which is then hidden). Gives us way more flexibility.
 
-					// Set background.
-						$image.css('background-image', 'url("' + $image_img.attr('src') + '")');
+				// Set background.
+					$image.css('background-image', 'url("' + $image_img.attr('src') + '")');
 
 
-					// Set background position.
-						if (x = $image_img.data('position'))
-							$image.css('background-position', x);
+				// Set background position.
+					if (x = $image_img.data('position'))
+						$image.css('background-position', x);
 
-					// Hide original img.
-						$image_img.hide();
+				// Hide original img.
+					$image_img.hide();
 
 			});
 		}
