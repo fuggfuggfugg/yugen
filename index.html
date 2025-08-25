@@ -61,8 +61,12 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script>
-		    // Append to the <body>; can use a CSS selector to append somewhere else.
-		    window.goatcounter.visit_count({append: 'body'})
+		    var t = setInterval(function() {
+		        if (window.goatcounter && window.goatcounter.visit_count) {
+		            clearInterval(t)
+		            window.goatcounter.visit_count({append: 'body'})
+		        }
+		    }, 100)
 		</script>
 		<script data-goatcounter="https://wanderinglines.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
