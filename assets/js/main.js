@@ -321,7 +321,7 @@
 			imageList.forEach(item => {
 				gallery.append(`
 					<article class="thumb">
-						<a href="images/art/${item.filename}" data-file="${item.filename}" class="image"><img src="images/art/${item.filename}" alt="${item.title}" /></a>
+						<a href="images/art/${item.filename}" data-file="${item.filename}" class="image"><img loading="lazy" src="images/art/${item.filename}" alt="${item.title}" /></a>
 						<h2><b>#${item.idx}</b> · ${item.title}</h2>
 						<p>${item.desc}</p>
 					</article>
