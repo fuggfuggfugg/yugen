@@ -1561,10 +1561,16 @@ input, select, textarea {
 						}
 
 	@media screen and (max-width: 736px) {
+		#wrapper {
+			padding-top: 8em;
+		}
 
 		#year-tabs {
 			display: block;
 			margin-left: 0;
+			text-align: center;
+			background: #1d1f21;
+			margin: 0px -10px;
 		}
 
 		#header {
@@ -1573,7 +1579,7 @@ input, select, textarea {
 			-ms-transform: translateY(0);
 			transform: translateY(0);
 			bottom: auto;
-			height: 4em;
+			height: 8em;
 			padding: 0 1em;
 			top: 0;
 		}
