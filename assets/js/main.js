@@ -253,7 +253,7 @@
             filterContainer.empty();
             //filterContainer.append(`<button class="filter-btn" data-year="all">All</button> `);
             years.forEach(year => {
-                filterContainer.append(`<button class="filter-btn" data-goatcounter-click="year-click" data-goatcounter-title="${year}" data-year="${year}">${year}</button> `);
+                filterContainer.append(`<button class="filter-btn" data-year="${year}">${year}</button> `);
             });
 
             // Open image popup by filename
@@ -329,7 +329,7 @@
             imageList.forEach(item => {
                 gallery.append(`
                     <article class="thumb">
-                        <a href="images/art/${item.filename}" data-file="${item.filename}" class="image"><img loading="lazy" src="images/art/${item.filename}" data-idx="#${item.idx}" alt="${item.title}" /></a>
+                        <a href="images/art/${item.filename}" data-file="${item.filename}" class="image"><img loading="lazy" src="images/art/${item.filename}" alt="${item.title}" /></a>
                         <h2><b>#${item.idx}</b> · ${item.title}</h2>
                         <p>${item.desc}</p>
                     </article>
@@ -394,14 +394,6 @@
                     $img[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); 
                     $('.image').removeClass("active");
                     $img.parent().addClass("active");
-
-                    // Trigger GoatCounter
-                    if (window.goatcounter) {
-                        window.goatcounter.count({
-                            path: $img.attr("data-idx"),
-                            title: 'image-click'
-                        });
-                    }
                 },
                 overlayOpacity: 0.5,
                 popupCloserText: '',
