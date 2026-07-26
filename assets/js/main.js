@@ -209,12 +209,8 @@
     // Main.
         var $main = $('#main');
 
-        // build filters
-        // <button data-year="2025" class="primary">2023</button>
-        // <button data-year="2024">2024</button>
-        // <button data-year="2023">2025</button>
-
-        $.getJSON('images/images.json', function(images) {
+        $.getJSON('images/images.json')
+        .done(function(images) {
             images.sort(function(a, b) {
               const dateA = a.filename.substring(0, 10);
               const dateB = b.filename.substring(0, 10);
@@ -319,6 +315,11 @@
                 }
                 applyFilter(year);
             });
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus);
+            console.log(errorThrown);
+            console.log(jqXHR.responseText);
         });
 
 
