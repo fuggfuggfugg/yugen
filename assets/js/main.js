@@ -308,13 +308,7 @@
             });
 
             // Optional: respond to hashchange event (e.g. user presses back button)
-            $(window).on('hashchange', function() {
-                let year = window.location.hash ? window.location.hash.substring(1) : 'all';
-                if(year !== 'all' && !years.includes(year)) {
-                    year = 'all';
-                }
-                applyFilter(year);
-            });
+            $(window).on('hashchange', initFromHash);
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -391,6 +385,17 @@
                 onPopupClose: function() { $body.removeClass('modal-active'); },
                 onPopupOpen: function() { $body.addClass('modal-active'); },
                 onImageLoaded: function(e,i) { 
+                    dateFromTxt = $(e.captionText).text().split(" · ")[1]
+                    
+                    if (dateFromTxt) { 
+                        let targetHash = "#" + dateFromTxt;
+                        
+                        // DEDUPLICATION GUARD: Only push if the browser isn't already on this hash
+                        if (window.location.hash !== targetHash) {
+                            history.pushState(null, "", targetHash); 
+                        }
+                    }
+                    
                     $img = $('.image > img[src="'+ e.src +'"]');
                     $img[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); 
                     $('.image').removeClass("active");
@@ -400,7 +405,8 @@
                 popupCloserText: '',
                 popupHeight: 150,
                 popupLoaderText: '',
-                popupSpeed: 300,
+                fadeSpeed: 0,
+                popupSpeed: 0,
                 popupWidth: 150,
                 selector: '.thumb > a.image',
                 usePopupCaption: true,
